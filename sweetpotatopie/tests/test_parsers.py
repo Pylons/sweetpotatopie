@@ -8,8 +8,8 @@ class Test_configure_loader(unittest.TestCase):
         return configure_loader(loader)
 
     def test_constructors_registered_only_on_loader_instance(self):
-        from StringIO import StringIO
         from yaml import Loader
+        from .._compat import StringIO
         loader = self._callFUT(Loader(StringIO()))
         for name in [
             '!field.string',
@@ -32,7 +32,7 @@ class Test_configure_loader(unittest.TestCase):
             '!schema',
             ]:
             # *Don't* populate the class-level registry, only the instance.
-            self.failIf(name in Loader.yaml_constructors)
+            self.assertFalse(name in Loader.yaml_constructors)
             self.failUnless(name in loader.yaml_constructors)
 
 

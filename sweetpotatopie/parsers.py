@@ -1,8 +1,9 @@
 import colander
 import yaml
-from zope.interface import implements
+from zope.interface import implementer
 
 from .interfaces import IParser
+from ._compat import u
 
 """
    --- !schema
@@ -64,33 +65,33 @@ def configure_loader(loader):
     if 'yaml_constructors' not in loader.__dict__:
         loader.yaml_constructors = loader.yaml_constructors.copy()
     ctors = loader.yaml_constructors
-    ctors[u'!field.string'] = _field(colander.String)
-    ctors[u'!field.integer'] = _field(colander.Integer)
-    ctors[u'!field.float'] = _field(colander.Float)
-    ctors[u'!field.decimal'] = _field(colander.Decimal)
-    ctors[u'!field.boolean'] = _field(colander.Boolean)
-    ctors[u'!field.datetime'] = _field(colander.DateTime)
-    ctors[u'!field.date'] = _field(colander.Date)
-    ctors[u'!field.tuple'] = _field(colander.Tuple)
-    ctors[u'!field.sequence'] = _field(colander.Sequence)
-    ctors[u'!field.mapping'] = _field(colander.Mapping)
-    ctors[u'!validator.function'] = _validator(colander.Function)
-    ctors[u'!validator.regex'] = _validator(colander.Regex)
-    ctors[u'!validator.email'] = _validator(colander.Email)
-    ctors[u'!validator.range'] = _validator(colander.Range)
-    ctors[u'!validator.length'] = _validator(colander.Length)
-    ctors[u'!validator.one_of'] = _one_of
-    ctors[u'!validator.all'] = _all
-    ctors[u'!schema'] = _field(colander.Mapping)
+    ctors[u('!field.string')] = _field(colander.String)
+    ctors[u('!field.integer')] = _field(colander.Integer)
+    ctors[u('!field.float')] = _field(colander.Float)
+    ctors[u('!field.decimal')] = _field(colander.Decimal)
+    ctors[u('!field.boolean')] = _field(colander.Boolean)
+    ctors[u('!field.datetime')] = _field(colander.DateTime)
+    ctors[u('!field.date')] = _field(colander.Date)
+    ctors[u('!field.tuple')] = _field(colander.Tuple)
+    ctors[u('!field.sequence')] = _field(colander.Sequence)
+    ctors[u('!field.mapping')] = _field(colander.Mapping)
+    ctors[u('!validator.function')] = _validator(colander.Function)
+    ctors[u('!validator.regex')] = _validator(colander.Regex)
+    ctors[u('!validator.email')] = _validator(colander.Email)
+    ctors[u('!validator.range')] = _validator(colander.Range)
+    ctors[u('!validator.length')] = _validator(colander.Length)
+    ctors[u('!validator.one_of')] = _one_of
+    ctors[u('!validator.all')] = _all
+    ctors[u('!schema')] = _field(colander.Mapping)
     return loader
 
 
+@implementer(IParser)
 class SchemaParser(object):
     """ Create a profile tree from a YAML text.
 
     See ../docs/declarative.rst for docs.
     """
-    implements(IParser)
 
     def __call__(self, text):
         """ See IParser.
