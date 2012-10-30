@@ -54,13 +54,6 @@ def _all(loader, node):
     return colander.All(*validators, **mapping)
 
 
-def _placeholder(klass):
-    def _curry(loader, node):
-        mapping = loader.construct_mapping(node, deep=True)
-        return klass(**mapping)
-    return _curry
-
-
 def configure_loader(loader):
     if 'yaml_constructors' not in loader.__dict__:
         loader.yaml_constructors = loader.yaml_constructors.copy()
