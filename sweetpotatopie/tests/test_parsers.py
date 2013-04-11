@@ -55,6 +55,21 @@ class SchemaParserTests(unittest.TestCase):
         from sweetpotatopie.parsers import IParser
         verifyObject(IParser, self._makeOne())
 
+    def test_optional_string_field(self):
+        import colander
+        PATTERN = r"\d\d\d-\d\d\d-\d\d\d\d"
+        TEXT = '\n'.join([
+            "!field.string",
+            "  name : phone",
+            "  missing : ''",
+        ])
+        parser = self._makeOne()
+        schema = parser(TEXT)
+        self.assertEqual(len(schema.children), 0)
+        self.failUnless(isinstance(schema.typ, colander.String))
+        self.assertEqual(schema.name, 'phone')
+        self.assertEqual(schema.missing, '')
+
     def test_string_field_with_regex_validator(self):
         import colander
         PATTERN = r"\d\d\d-\d\d\d-\d\d\d\d"
