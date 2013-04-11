@@ -1,8 +1,8 @@
 ``sweetpotatopie`` Changelog
 ============================
 
-Unreleased
-----------
+0.2 (2013-04-11)
+----------------
 
 - Add some added field types:  colander.Time, colander.Set
  
