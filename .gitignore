@@ -27,3 +27,4 @@ pip-log.txt
 .mr.developer.cfg
 nosetests.xml
 coverage.xml
+doc/_build
