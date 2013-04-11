@@ -1,4 +1,5 @@
 import colander
+import deform
 import yaml
 from zope.interface import implementer
 
@@ -53,6 +54,12 @@ def _all(loader, node):
     validators = mapping.pop('validators')
     return colander.All(*validators, **mapping)
 
+def _widget(widget_type):
+    def _nested(loader, node):
+        mapping = loader.construct_mapping(node, deep=True)
+        return widget_type(**mapping)
+    return _nested
+
 
 def configure_loader(loader):
     if 'yaml_constructors' not in loader.__dict__:
@@ -65,7 +72,9 @@ def configure_loader(loader):
     ctors[u('!field.boolean')] = _field(colander.Boolean)
     ctors[u('!field.datetime')] = _field(colander.DateTime)
     ctors[u('!field.date')] = _field(colander.Date)
+    ctors[u('!field.time')] = _field(colander.Time)
     ctors[u('!field.tuple')] = _field(colander.Tuple)
+    ctors[u('!field.set')] = _field(colander.Set)
     ctors[u('!field.sequence')] = _field(colander.Sequence)
     ctors[u('!field.mapping')] = _field(colander.Mapping)
     ctors[u('!validator.function')] = _validator(colander.Function)
@@ -76,6 +85,11 @@ def configure_loader(loader):
     ctors[u('!validator.one_of')] = _one_of
     ctors[u('!validator.all')] = _all
     ctors[u('!schema')] = _field(colander.Mapping)
+    ctors[u('!widget.checkboxes')] = _widget(deform.widget.CheckboxChoiceWidget)
+    ctors[u('!widget.radio')] = _widget(deform.widget.RadioChoiceWidget)
+    ctors[u('!widget.richtext')] = _widget(deform.widget.RichTextWidget)
+    ctors[u('!widget.select')] = _widget(deform.widget.SelectWidget)
+    ctors[u('!widget.textarea')] = _widget(deform.widget.TextAreaWidget)
     return loader
 
 
