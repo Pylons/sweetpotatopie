@@ -36,7 +36,7 @@ testing_extras = ['nose', 'coverage']
 docs_extras = ['Sphinx']
 
 setup(name='sweetpotatopie',
-      version='0.1dev',
+      version='0.1',
       description=('YAML mappings for colander schemas'),
       long_description=README + '\n\n' +  CHANGES,
       classifiers=[
