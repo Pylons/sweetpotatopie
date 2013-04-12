@@ -1,8 +1,9 @@
 ``sweetpotatopie`` Changelog
 ============================
 
-Unreleased
-----------
+
+0.3 (2013-04-12)
+----------------
 
 - Add a field type:  colander.Money
 
