@@ -69,6 +69,7 @@ def configure_loader(loader):
     ctors[u('!field.integer')] = _field(colander.Integer)
     ctors[u('!field.float')] = _field(colander.Float)
     ctors[u('!field.decimal')] = _field(colander.Decimal)
+    ctors[u('!field.money')] = _field(colander.Money)
     ctors[u('!field.boolean')] = _field(colander.Boolean)
     ctors[u('!field.datetime')] = _field(colander.DateTime)
     ctors[u('!field.date')] = _field(colander.Date)
@@ -85,11 +86,28 @@ def configure_loader(loader):
     ctors[u('!validator.one_of')] = _one_of
     ctors[u('!validator.all')] = _all
     ctors[u('!schema')] = _field(colander.Mapping)
-    ctors[u('!widget.checkboxes')] = _widget(deform.widget.CheckboxChoiceWidget)
+    ctors[u('!widget.autocomplete')] = _widget(
+                                        deform.widget.AutocompleteInputWidget)
+    ctors[u('!widget.checkbox')] = _widget(deform.widget.CheckboxWidget)
+    ctors[u('!widget.checkboxes')] = _widget(
+                                        deform.widget.CheckboxChoiceWidget)
+    ctors[u('!widget.checked')] = _widget(deform.widget.CheckedInputWidget)
+    ctors[u('!widget.checked_password')] = _widget(
+                                        deform.widget.CheckedPasswordWidget)
+    ctors[u('!widget.date')] = _widget(deform.widget.DateInputWidget)
+    ctors[u('!widget.dateparts')] = _widget(deform.widget.DatePartsWidget)
+    ctors[u('!widget.datetime')] = _widget(deform.widget.DatetimeInputWidget)
+    ctors[u('!widget.hidden')] = _widget(deform.widget.HiddenWidget)
+    ctors[u('!widget.input')] = _widget(deform.widget.TextInputWidget)
+    ctors[u('!widget.input_csv')] = _widget(deform.widget.TextInputCSVWidget)
+    ctors[u('!widget.money')] = _widget(deform.widget.MoneyInputWidget)
+    ctors[u('!widget.password')] = _widget(deform.widget.PasswordWidget)
     ctors[u('!widget.radio')] = _widget(deform.widget.RadioChoiceWidget)
     ctors[u('!widget.richtext')] = _widget(deform.widget.RichTextWidget)
     ctors[u('!widget.select')] = _widget(deform.widget.SelectWidget)
+    ctors[u('!widget.textarea_csv')] = _widget(deform.widget.TextAreaCSVWidget)
     ctors[u('!widget.textarea')] = _widget(deform.widget.TextAreaWidget)
+    ctors[u('!widget.upload')] = _widget(deform.widget.FileUploadWidget)
     return loader
 
 
