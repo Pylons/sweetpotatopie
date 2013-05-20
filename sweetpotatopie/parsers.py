@@ -96,7 +96,7 @@ def configure_loader(loader):
                                         deform.widget.CheckedPasswordWidget)
     ctors[u('!widget.date')] = _widget(deform.widget.DateInputWidget)
     ctors[u('!widget.dateparts')] = _widget(deform.widget.DatePartsWidget)
-    ctors[u('!widget.datetime')] = _widget(deform.widget.DatetimeInputWidget)
+    ctors[u('!widget.datetime')] = _widget(deform.widget.DateTimeInputWidget)
     ctors[u('!widget.hidden')] = _widget(deform.widget.HiddenWidget)
     ctors[u('!widget.input')] = _widget(deform.widget.TextInputWidget)
     ctors[u('!widget.input_csv')] = _widget(deform.widget.TextInputCSVWidget)

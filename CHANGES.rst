@@ -4,6 +4,8 @@
 0.4 (unreleased)
 ----------------
 
+- Fix typo in spelling of ``deform.widget.DateTimeInputWidget``.
+
 - Make dependency on ``deform`` explicit.
 
 0.3 (2013-04-12)
