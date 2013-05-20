@@ -28,6 +28,7 @@ except:
 
 requires = [
     'colander',
+    'deform',
     'PyYAML',
     'zope.interface',
 ]
@@ -36,7 +37,7 @@ testing_extras = ['nose', 'coverage']
 docs_extras = ['Sphinx']
 
 setup(name='sweetpotatopie',
-      version='0.3',
+      version='0.4dev',
       description=('YAML mappings for colander schemas'),
       long_description=README + '\n\n' +  CHANGES,
       classifiers=[

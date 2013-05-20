@@ -1,6 +1,10 @@
 ``sweetpotatopie`` Changelog
 ============================
 
+0.4 (unreleased)
+----------------
+
+- Make dependency on ``deform`` explicit.
 
 0.3 (2013-04-12)
 ----------------
